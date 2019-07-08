@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name ObdAdapter)(type KiCad)(uri ${KIPRJMOD}/ObdAdapter.pretty)(options "")(descr ""))
+)

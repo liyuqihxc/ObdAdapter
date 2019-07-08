@@ -26,7 +26,7 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
-	500  2350 2950 2350
+	500  2350 3200 2350
 $Comp
 L Device:Crystal Y1
 U 1 1 5D222D2E
@@ -124,7 +124,7 @@ Wire Wire Line
 Wire Wire Line
 	5050 2600 5400 2600
 Wire Notes Line
-	2950 500  2950 4300
+	3200 500  3200 4300
 $Comp
 L power:GND #PWR?
 U 1 1 5D222177
@@ -750,25 +750,14 @@ Wire Wire Line
 Wire Wire Line
 	6300 1800 6500 1800
 $Comp
-L Connector_Generic:Conn_02x05_Odd_Even J2
-U 1 1 5D2A99CE
-P 1600 3350
-F 0 "J2" H 1650 3767 50  0000 C CNN
-F 1 "OBDII" H 1650 3676 50  0000 C CNN
-F 2 "" H 1600 3350 50  0001 C CNN
-F 3 "~" H 1600 3350 50  0001 C CNN
-	1    1600 3350
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+BATT #PWR?
 U 1 1 5D2AB7DA
-P 2000 3450
-F 0 "#PWR?" H 2000 3300 50  0001 C CNN
-F 1 "+BATT" V 2015 3578 50  0000 L CNN
-F 2 "" H 2000 3450 50  0001 C CNN
-F 3 "" H 2000 3450 50  0001 C CNN
-	1    2000 3450
+P 2750 3700
+F 0 "#PWR?" H 2750 3550 50  0001 C CNN
+F 1 "+BATT" V 2765 3828 50  0000 L CNN
+F 2 "" H 2750 3700 50  0001 C CNN
+F 3 "" H 2750 3700 50  0001 C CNN
+	1    2750 3700
 	0    1    1    0   
 $EndComp
 $Comp
@@ -782,39 +771,16 @@ F 3 "" H 950 6650 50  0001 C CNN
 	1    950  6650
 	0    -1   -1   0   
 $EndComp
-Text Label 2050 3150 0    50   ~ 0
+Text Label 650  3100 0    50   ~ 0
 J1850+
-Text Label 2050 3250 0    50   ~ 0
+Text Label 2750 3100 0    50   ~ 0
 J1850-
-Text Label 1100 3450 0    50   ~ 0
+Text Label 650  3600 0    50   ~ 0
 K-LINE
-Text Label 1100 3350 0    50   ~ 0
+Text Label 650  3500 0    50   ~ 0
 CAN-H
-Text Label 1100 3550 0    50   ~ 0
+Text Label 2800 3500 0    50   ~ 0
 CAN-L
-Wire Wire Line
-	1400 3350 1100 3350
-Wire Wire Line
-	1100 3450 1400 3450
-Wire Wire Line
-	1100 3550 1400 3550
-Wire Wire Line
-	1900 3150 2050 3150
-Wire Wire Line
-	2050 3250 1900 3250
-$Comp
-L power:GND #PWR?
-U 1 1 5D2CBFED
-P 1400 3150
-F 0 "#PWR?" H 1400 2900 50  0001 C CNN
-F 1 "GND" V 1405 3022 50  0000 R CNN
-F 2 "" H 1400 3150 50  0001 C CNN
-F 3 "" H 1400 3150 50  0001 C CNN
-	1    1400 3150
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	1900 3450 2000 3450
 $Comp
 L Comparator:LM393 U3
 U 1 1 5D2D16E1
@@ -852,4 +818,38 @@ Wire Notes Line
 	2100 4300 2100 5950
 Wire Notes Line
 	2100 5950 4000 5950
+$Comp
+L ObdAdapter:OBDII J2
+U 1 1 5D231DF7
+P 1850 3400
+F 0 "J2" H 1850 4065 50  0000 C CNN
+F 1 "OBDII" H 1850 3974 50  0000 C CNN
+F 2 "ObdAdapter:OBDII" H 1880 3550 20  0001 C CNN
+F 3 "" H 1850 3400 60  0000 C CNN
+	1    1850 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5D2CBFED
+P 950 3400
+F 0 "#PWR?" H 950 3150 50  0001 C CNN
+F 1 "GND" V 955 3272 50  0000 R CNN
+F 2 "" H 950 3400 50  0001 C CNN
+F 3 "" H 950 3400 50  0001 C CNN
+	1    950  3400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	950  3100 650  3100
+Wire Wire Line
+	950  3500 650  3500
+Wire Wire Line
+	950  3600 650  3600
+Wire Wire Line
+	2750 3100 3000 3100
+Wire Wire Line
+	2750 3500 3000 3500
+Wire Wire Line
+	5000 3400 5400 3400
 $EndSCHEMATC
