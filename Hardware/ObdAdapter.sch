@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:ObdAdapter-cache
-EELAYER 29 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -406,14 +405,9 @@ Wire Wire Line
 Wire Wire Line
 	6000 1900 6000 1700
 Wire Wire Line
-	6000 1700 6100 1700
-Wire Wire Line
 	6200 1700 6200 1900
 Wire Wire Line
 	6100 1700 6100 1900
-Connection ~ 6100 1700
-Wire Wire Line
-	6100 1700 6200 1700
 $Comp
 L Device:C_Small C3
 U 1 1 5D254300
@@ -460,13 +454,6 @@ F 3 "~" H 6400 1350 50  0001 C CNN
 	1    6400 1350
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6100 1450 6100 1700
-Wire Wire Line
-	5800 1450 6100 1450
-Connection ~ 6100 1450
-Wire Wire Line
-	6100 1450 6400 1450
 Wire Wire Line
 	5800 1250 6100 1250
 Connection ~ 6100 1250
@@ -808,7 +795,7 @@ L Interface_CAN_LIN:MCP2021A-xxxxSN U5
 U 1 1 5D2498B4
 P 9900 3550
 F 0 "U5" H 10200 3200 50  0000 C CNN
-F 1 "MCP2021A-xxxxSN" H 10350 3100 50  0000 C CNN
+F 1 "MCP2021A" H 10350 3100 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9925 3625 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/20002298C.pdf" H 9925 3625 50  0001 C CNN
 	1    9900 3550
@@ -916,7 +903,6 @@ F 3 "" H 6400 1450 50  0001 C CNN
 	1    6400 1450
 	-1   0    0    1   
 $EndComp
-Connection ~ 6400 1450
 $Comp
 L power:+3V3 #PWR?
 U 1 1 5D2803AD
@@ -1091,11 +1077,11 @@ L power:+3V3 #PWR?
 U 1 1 5D2F18AC
 P 2000 5900
 F 0 "#PWR?" H 2000 5750 50  0001 C CNN
-F 1 "+3V3" V 2015 6028 50  0000 L CNN
+F 1 "+3V3" H 1900 6050 50  0000 L CNN
 F 2 "" H 2000 5900 50  0001 C CNN
 F 3 "" H 2000 5900 50  0001 C CNN
 	1    2000 5900
-	0    1    1    0   
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	1700 5900 1850 5900
@@ -1245,4 +1231,23 @@ F 3 "" H 9700 3050 50  0001 C CNN
 	1    9700 3050
 	0    1    1    0   
 $EndComp
+Wire Notes Line
+	8300 2550 11200 2550
+Wire Notes Line
+	8300 4400 11200 4400
+Wire Notes Line
+	8300 500  8300 4400
+Connection ~ 6400 1450
+Wire Wire Line
+	6100 1450 6400 1450
+Wire Wire Line
+	5800 1450 6100 1450
+Connection ~ 6100 1450
+Wire Wire Line
+	6100 1700 6200 1700
+Wire Wire Line
+	6000 1700 6100 1700
+Connection ~ 6100 1700
+Wire Wire Line
+	6100 1450 6100 1700
 $EndSCHEMATC
