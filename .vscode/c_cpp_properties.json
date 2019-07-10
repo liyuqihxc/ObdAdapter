@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [
+        "${workspaceFolder}/Firmware/include/**"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}/Firmware/include/**"
+        ],
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": ""
+      },
+      "defines": [],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c99",
+      "cppStandard": "c++11"
+    }
+  ],
+  "version": 4
+}
