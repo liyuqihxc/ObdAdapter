@@ -3,17 +3,56 @@
     {
       "name": "Linux",
       "includePath": [
-        "${workspaceFolder}/Firmware/include/**"
+        "${workspaceFolder}/Firmware/include/**",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/include",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/include-fixed",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1/backward"
       ],
       "browse": {
         "path": [
-          "${workspaceFolder}/Firmware/include/**"
+          "${workspaceFolder}/Firmware/include/**",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/include",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/include-fixed",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1/backward"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""
       },
       "defines": [],
-      "compilerPath": "/usr/bin/gcc",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard",
+      "cStandard": "c99",
+      "cppStandard": "c++11"
+    },
+    {
+      "name": "Win32",
+      "includePath": [
+        "${workspaceFolder}/Firmware/include/**",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/include",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/include-fixed",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1",
+        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1/backward"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}/Firmware/include/**",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/include",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/include-fixed",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1",
+          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1/backward"
+        ],
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": ""
+      },
+      "defines": [],
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "arm-none-eabi-gcc.exe -mcpu=cortex-m4 -mthumb -mfloat-abi=hard",
       "cStandard": "c99",
       "cppStandard": "c++11"
     }
