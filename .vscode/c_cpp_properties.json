@@ -3,7 +3,9 @@
     {
       "name": "Linux",
       "includePath": [
-        "${workspaceFolder}/Firmware/include/**",
+        "${workspaceFolder}/Firmware/Core/Inc",
+        "${workspaceFolder}/Firmware/Drivers/CMSIS/Include",
+        "${workspaceFolder}/Firmware/Drivers/STM32F1xx_HAL_Driver/Inc",
         "/usr/lib/gcc/arm-none-eabi/7.3.1/include",
         "/usr/lib/gcc/arm-none-eabi/7.3.1/include-fixed",
         "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include",
@@ -12,7 +14,9 @@
       ],
       "browse": {
         "path": [
-          "${workspaceFolder}/Firmware/include/**",
+          "${workspaceFolder}/Firmware/Core/Inc",
+          "${workspaceFolder}/Firmware/Drivers/CMSIS/Include",
+          "${workspaceFolder}/Firmware/Drivers/STM32F1xx_HAL_Driver/Inc",
           "/usr/lib/gcc/arm-none-eabi/7.3.1/include",
           "/usr/lib/gcc/arm-none-eabi/7.3.1/include-fixed",
           "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include",
@@ -31,21 +35,25 @@
     {
       "name": "Win32",
       "includePath": [
-        "${workspaceFolder}/Firmware/include/**",
-        "/usr/lib/gcc/arm-none-eabi/7.3.1/include",
-        "/usr/lib/gcc/arm-none-eabi/7.3.1/include-fixed",
-        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include",
-        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1",
-        "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1/backward"
+        "${workspaceFolder}/Firmware/Core/Inc",
+        "${workspaceFolder}/Firmware/Drivers/CMSIS/Include",
+        "${workspaceFolder}/Firmware/Drivers/STM32F1xx_HAL_Driver/Inc",
+        "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\lib\\gcc\\arm-none-eabi\\5.4.1\\include",
+        "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\lib\\gcc\\arm-none-eabi\\5.4.1\\include-fixed",
+        "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\arm-none-eabi\\include",
+        "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\arm-none-eabi\\include\\c++\\5.4.1",
+        "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\arm-none-eabi\\include\\c++\\5.4.1\\backward"
       ],
       "browse": {
         "path": [
-          "${workspaceFolder}/Firmware/include/**",
-          "/usr/lib/gcc/arm-none-eabi/7.3.1/include",
-          "/usr/lib/gcc/arm-none-eabi/7.3.1/include-fixed",
-          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include",
-          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1",
-          "/usr/lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/include/c++/7.3.1/backward"
+          "${workspaceFolder}/Firmware/Core/Inc",
+          "${workspaceFolder}/Firmware/Drivers/CMSIS/Include",
+          "${workspaceFolder}/Firmware/Drivers/STM32F1xx_HAL_Driver/Inc",
+          "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\lib\\gcc\\arm-none-eabi\\5.4.1\\include",
+          "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\lib\\gcc\\arm-none-eabi\\5.4.1\\include-fixed",
+          "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\arm-none-eabi\\include",
+          "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\arm-none-eabi\\include\\c++\\5.4.1",
+          "C:\\Program Files (x86)\\GNU Tools ARM Embedded\\5.4 2016q3\\arm-none-eabi\\include\\c++\\5.4.1\\backward"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""
