@@ -6,16 +6,25 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "cmake \"MinGW Makefiles\" -DCMAKE_TOOLCHAIN_FILE=\"${workspaceRoot}\toolchain.cmake\"  ${workspaceRoot}",
-            "args": [
-                "-G",
-                "MinGW Makefiles",
-                "-DCMAKE_TOOLCHAIN_FILE=\"${workspaceRoot}\toolchain.cmake\"",
-                "./.."
-            ],
+            "command": "cmake",
+            "windows": {
+                "args": [
+                    "MinGW Makefiles",
+                    "-DCMAKE_TOOLCHAIN_FILE='${workspaceRoot}/Firmware/toolchain-arm-none-eabi.cmake'",
+                    "-DCMAKE_BUILD_TYPE=Debug",
+                    "-DTOOLCHAIN_PREFIX='C:/Program Files (x86)/GNU Tools ARM Embedded/5.4 2016q3'",
+                    "./.."
+                ]
+            },
+            "linux": {
+                "args": [
+
+                ]
+            },
             "options": {
                 "cwd": "${workspaceRoot}/Firmware/Build"
             },
+            "problemMatcher": "$gcc"
         }
     ]
 }

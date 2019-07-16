@@ -1,7 +1,6 @@
 # https://gist.github.com/kbumsik/52ce3f41a62f2485c3da1a585674e550
 cmake_minimum_required(VERSION 3.0)
-set(PROJECT_NAME "ObdII_Adapter_Firmware")
-project(${PROJECT_NAME})
+project("ObdII_Adapter_Firmware")
 
 set(MCU_FAMILY STM32F1xx)
 set(MCU_LINE STM32F103xB)
@@ -23,40 +22,21 @@ include_directories(${HAL_DIR}/Inc)
 # For diagnostic tools like rtags.
 # set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# tool chain
-# Get the GNU ARM Embedded Toolchain:
-# https://launchpad.net/gcc-arm-embedded/+download.
-set(CMAKE_C_COMPILER "arm-none-eabi-gcc")
-set(CMAKE_ASM_COMPILER "arm-none-eabi-as")
-set(CMAKE_CXX_COMPILER "arm-none-eabi-g++")
-set(CMAKE_LINKER "arm-none-eabi-gcc")
-
-set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_SYSTEM_PROCESSOR arm)
-
 # Compile and link
-set(DEBUG ON)
-set(OPTIMIZATION "-Og")
-set(CPU "-mcpu=cortex-m3")
-set(MCU "${CPU} -mthumb $(FPU) $(FLOAT-ABI)")
-set(C_DEFS "-DUSE_HAL_DRIVER -D${MCU_LINE}")
+set(MCU_FLAGS "-mcpu=cortex-m3 $(FPU) $(FLOAT-ABI)")
+set(COMMON_FLAGS "${MCU_FLAGS} -DUSE_HAL_DRIVER -D${MCU_LINE}")
 
-set(COMMON_FLAGS "${MCU} ${C_DEFS} ${OPTIMIZATION} -Wall -ffunction-sections -fdata-sections")
-if (DEBUG)
-set(COMMON_FLAGS "-g -gdwarf-2 ${COMMON_FLAGS}")
-endif()
-
-set(CMAKE_C_FLAGS "${COMMON_FLAGS} -std=gnu99")
-set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -std=c++11")
+set(CMAKE_C_FLAGS "${COMMON_FLAGS}")
+set(CMAKE_CXX_FLAGS "${COMMON_FLAGS}")
 # set(CMAKE_EXE_LINKER_FLAGS "--specs=nosys.specs" CACHE INTERNAL "")
-set(CMAKE_EXE_LINKER_FLAGS "--specs=nosys.specs -T${CMAKE_SOURCE_DIR}/${MCU_LINKER_SCRIPT} -Wl, -Map=${PROJECT_NAME}.map,--cref -Wl,--gc-section")
+set(CMAKE_EXE_LINKER_FLAGS "${MCU_FLAGS} --T${CMAKE_SOURCE_DIR}/${MCU_LINKER_SCRIPT} -Wl,--cref -Wl")
 
 # Some trickery to get CMake to deal with our assembler code.
 # set_property(SOURCE ${DEVICE_DIR}/Source/Templates/gcc/startup_stm32f103xb.s PROPERTY LANGUAGE C)
 
 # The linker flag --gc-section keeps unused object code here from being linked.
-add_executable(${PROJECT_NAME}.elf
-  ${CMAKE_SOURCE_DIR}/src/main.cc
+add_executable(${CMAKE_PROJECT_NAME}.elf
+  # ${CMAKE_SOURCE_DIR}/src/main.cc
   ${CORE_DIR}/Src/main.c
   ${CORE_DIR}/Src/stm32f1xx_it.c
   ${CORE_DIR}/Src/system_stm32f1xx.c
@@ -77,22 +57,22 @@ add_executable(${PROJECT_NAME}.elf
 
 # Generate assembly listing.
 add_custom_command(
-  TARGET ${PROJECT_NAME}.elf
+  TARGET ${CMAKE_PROJECT_NAME}.elf
   COMMAND "arm-none-eabi-objdump"
-  ARGS "-S" "${PROJECT_NAME}.elf" ">>" "${PROJECT_NAME}.lst"
+  ARGS "-S" "${CMAKE_PROJECT_NAME}.elf" ">>" "${CMAKE_PROJECT_NAME}.lst"
 )
 
 # Flash firmware to target.
 add_custom_target(flash
   openocd -f interface/stlink-v2-1.cfg -c "transport select hla_swd"
   -f target/stm32f0x.cfg -c "init" -c "reset halt"
-  -c "flash write_image erase ${PROJECT_NAME}.elf" -c "reset run" -c "shutdown"
-  DEPENDS ${PROJECT_NAME}.elf
+  -c "flash write_image erase ${CMAKE_PROJECT_NAME}.elf" -c "reset run" -c "shutdown"
+  DEPENDS ${CMAKE_PROJECT_NAME}.elf
   COMMENT "Flashing target hardware")
 
 # Run OpenOCD as a GDB host.
 add_custom_target(gdbhost
   openocd -f interface/stlink-v2-1.cfg -c "transport select hla_swd"
   -f target/stm32f0x.cfg -c "init" -c "reset halt"
-  DEPENDS ${PROJECT_NAME}.elf
+  DEPENDS ${CMAKE_PROJECT_NAME}.elf
   COMMENT "Running OpenOCD as a GDB host.")
