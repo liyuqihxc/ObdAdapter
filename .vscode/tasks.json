@@ -9,6 +9,7 @@
             "command": "cmake",
             "windows": {
                 "args": [
+                    "-G",
                     "MinGW Makefiles",
                     "-DCMAKE_TOOLCHAIN_FILE=../toolchain-arm-none-eabi.cmake",
                     "-DCMAKE_BUILD_TYPE=Debug",
@@ -30,7 +31,7 @@
             "problemMatcher": "$gcc"
         },
         {
-            "label": "make",
+            "label": "build",
             "type": "process",
             "command": "cmake",
             "args": [
