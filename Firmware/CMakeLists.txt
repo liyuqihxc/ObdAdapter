@@ -20,7 +20,7 @@ include_directories(${DEVICE_DIR}/Include)
 include_directories(${HAL_DIR}/Inc)
 
 # For diagnostic tools like rtags.
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Compile and link
 set(MCU_FLAGS "-mcpu=cortex-m3 -mthumb ${FPU} ${FLOAT-ABI}")
@@ -64,6 +64,10 @@ add_custom_command(
   COMMAND "${CMAKE_OBJDUMP}"
   ARGS "-S" "${CMAKE_PROJECT_NAME}.elf" ">>" "${CMAKE_PROJECT_NAME}.lst"
 )
+
+#####################################################
+# http://gnutoolchains.com/arm-eabi/openocd/
+#####################################################
 
 # Flash firmware to target.
 add_custom_target(flash
