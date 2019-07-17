@@ -23,13 +23,13 @@ include_directories(${HAL_DIR}/Inc)
 # set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Compile and link
-set(MCU_FLAGS "-mcpu=cortex-m3 $(FPU) $(FLOAT-ABI)")
+set(MCU_FLAGS "-mcpu=cortex-m3 ${FPU} ${FLOAT-ABI}")
 set(COMMON_FLAGS "${MCU_FLAGS} -DUSE_HAL_DRIVER -D${MCU_LINE}")
 
 set(CMAKE_C_FLAGS "${COMMON_FLAGS}")
 set(CMAKE_CXX_FLAGS "${COMMON_FLAGS}")
 # set(CMAKE_EXE_LINKER_FLAGS "--specs=nosys.specs" CACHE INTERNAL "")
-set(CMAKE_EXE_LINKER_FLAGS "${MCU_FLAGS} --T${CMAKE_SOURCE_DIR}/${MCU_LINKER_SCRIPT} -Wl,--cref -Wl")
+set(CMAKE_EXE_LINKER_FLAGS "${MCU_FLAGS} -T${CMAKE_SOURCE_DIR}/${MCU_LINKER_SCRIPT} -Wl,--cref")
 
 # Some trickery to get CMake to deal with our assembler code.
 # set_property(SOURCE ${DEVICE_DIR}/Source/Templates/gcc/startup_stm32f103xb.s PROPERTY LANGUAGE C)
@@ -43,6 +43,7 @@ add_executable(${CMAKE_PROJECT_NAME}.elf
   ${CMAKE_SOURCE_DIR}/startup_stm32f103xb.s
   ${HAL_DIR}/Src/stm32f1xx_hal.c
   ${HAL_DIR}/Src/stm32f1xx_hal_cortex.c
+  ${HAL_DIR}/Src/stm32f1xx_hal_can.c
   ${HAL_DIR}/Src/stm32f1xx_hal_dma.c
   ${HAL_DIR}/Src/stm32f1xx_hal_flash.c
   ${HAL_DIR}/Src/stm32f1xx_hal_flash_ex.c
@@ -51,14 +52,17 @@ add_executable(${CMAKE_PROJECT_NAME}.elf
   ${HAL_DIR}/Src/stm32f1xx_hal_pwr.c
   ${HAL_DIR}/Src/stm32f1xx_hal_rcc.c
   ${HAL_DIR}/Src/stm32f1xx_hal_rcc_ex.c
+  ${HAL_DIR}/Src/stm32f1xx_hal_rtc.c
+  ${HAL_DIR}/Src/stm32f1xx_hal_rtc_ex.c
   ${HAL_DIR}/Src/stm32f1xx_hal_tim.c
   ${HAL_DIR}/Src/stm32f1xx_hal_tim_ex.c
+  ${HAL_DIR}/Src/stm32f1xx_hal_uart.c
 )
 
 # Generate assembly listing.
 add_custom_command(
   TARGET ${CMAKE_PROJECT_NAME}.elf
-  COMMAND "arm-none-eabi-objdump"
+  COMMAND "${CMAKE_OBJDUMP}"
   ARGS "-S" "${CMAKE_PROJECT_NAME}.elf" ">>" "${CMAKE_PROJECT_NAME}.lst"
 )
 

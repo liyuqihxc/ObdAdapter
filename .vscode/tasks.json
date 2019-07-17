@@ -4,13 +4,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
-            "type": "shell",
+            "label": "generate",
+            "type": "process",
             "command": "cmake",
             "windows": {
                 "args": [
                     "MinGW Makefiles",
-                    "-DCMAKE_TOOLCHAIN_FILE='${workspaceRoot}/Firmware/toolchain-arm-none-eabi.cmake'",
+                    "-DCMAKE_TOOLCHAIN_FILE=../toolchain-arm-none-eabi.cmake",
                     "-DCMAKE_BUILD_TYPE=Debug",
                     "-DTOOLCHAIN_PREFIX='C:/Program Files (x86)/GNU Tools ARM Embedded/5.4 2016q3'",
                     "./.."
@@ -18,12 +18,35 @@
             },
             "linux": {
                 "args": [
-
+                    "-DCMAKE_TOOLCHAIN_FILE=../toolchain-arm-none-eabi.cmake",
+                    "-DCMAKE_BUILD_TYPE=Debug",
+                    "./.."
                 ]
             },
             "options": {
                 "cwd": "${workspaceRoot}/Firmware/Build"
             },
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "make",
+            "type": "process",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "."
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/Firmware/Build"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "generate"
+            ],
             "problemMatcher": "$gcc"
         }
     ]
