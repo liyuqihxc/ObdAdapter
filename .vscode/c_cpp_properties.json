@@ -28,7 +28,7 @@
       },
       "defines": [],
       "intelliSenseMode": "gcc-x64",
-      "compilerPath": "arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard",
+      "compilerPath": "arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=hard",
       "cStandard": "c99",
       "cppStandard": "c++11"
     },
@@ -60,7 +60,7 @@
       },
       "defines": [],
       "intelliSenseMode": "gcc-x64",
-      "compilerPath": "arm-none-eabi-gcc.exe -mcpu=cortex-m4 -mthumb -mfloat-abi=hard",
+      "compilerPath": "arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -mfloat-abi=hard",
       "cStandard": "c99",
       "cppStandard": "c++11"
     }
